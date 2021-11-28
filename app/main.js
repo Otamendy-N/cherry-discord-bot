@@ -9,6 +9,8 @@ const {
   createAudioResource,
   joinVoiceChannel,
 } = require("@discordjs/voice");
+const express = require('express')
+const app = express()
 
 // Create a new Instance
 const client = new Client({
@@ -60,3 +62,11 @@ client.on("messageCreate", async (msg) => {
 });
 
 client.login(process.env.BOT_TOKEN);
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`App is running on port: ${process.env.PORT}`)
+})
