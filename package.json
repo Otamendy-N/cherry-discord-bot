@@ -4,7 +4,7 @@
   "description": "This is a discord bot for learning and fun :D",
   "main": "app",
   "scripts": {
-    "dev": "node ./app/main.js"
+    "start": "node ./app/main.js"
   },
   "author": "klahomu papasito",
   "license": "ISC",
