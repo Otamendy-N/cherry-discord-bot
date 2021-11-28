@@ -1,6 +1,6 @@
 require("colors");
+require("dotenv").config()
 const { Client, Intents } = require("discord.js");
-const { token } = require("./auth.json");
 const ytdl = require("ytdl-core");
 const {
   AudioPlayerStatus,
@@ -59,4 +59,4 @@ bot.on("messageCreate", async (msg) => {
   }
 });
 
-bot.login(token);
+bot.login(process.env.BOT_TOKEN);
