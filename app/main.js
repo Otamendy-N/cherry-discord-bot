@@ -11,7 +11,7 @@ const {
 } = require("@discordjs/voice");
 
 // Create a new Instance
-const bot = new Client({
+const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
@@ -20,17 +20,17 @@ const bot = new Client({
   ],
 });
 
-bot.once("ready", () => {
+client.once("ready", () => {
   console.log("[SUCCESS]".bgGreen + " Cherry launches properly!".green);
 });
 
-bot.on("interactionCreate", async (interaction) => {
+client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
 
   const { commandName } = interaction;
 
   if (commandName === "ping") {
-    await interaction.reply(`Websocket heartbeat: ${bot.ws.ping}ms.`);
+    await interaction.reply(`Websocket heartbeat: ${client.ws.ping}ms.`);
   } else if (commandName === "server") {
     await interaction.reply(
       `Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`
@@ -38,8 +38,8 @@ bot.on("interactionCreate", async (interaction) => {
   }
 });
 
-bot.on("messageCreate", async (msg) => {
-  if (msg.content == "hola") {
+client.on("messageCreate", async (msg) => {
+  if (msg.content == "play") {
     const connection = joinVoiceChannel({
       channelId: msg.member.voice.channel.id,
       guildId: msg.guild.id,
@@ -59,4 +59,4 @@ bot.on("messageCreate", async (msg) => {
   }
 });
 
-bot.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
